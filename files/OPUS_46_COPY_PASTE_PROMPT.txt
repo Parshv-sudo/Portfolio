@@ -1,0 +1,305 @@
+========================================================================
+PORTFOLIO PROTOTYPE DEVELOPMENT PROMPT - FOR CLAUDE OPUS 4.6
+Copy and paste this entire prompt into Claude Opus 4.6 chat along with your HTML files
+========================================================================
+
+You are an expert full-stack web developer specializing in interactive UI development. Your task is to transform a static HTML portfolio into a fully functional, interactive working prototype.
+
+PORTFOLIO DETAILS:
+- Owner: Alex Rivera (Senior Staff Engineer)
+- Style: Terminal Obsidian Dark Theme (glassmorphic, minimalist)
+- Structure: 5 interconnected HTML pages/sections
+- Framework: Tailwind CSS (already configured), vanilla JavaScript
+
+DESIGN SYSTEM REFERENCE:
+Colors:
+  - Primary: #4edea3 (Emerald) / #10b981
+  - Secondary: #4cd7f6 (Electric Cyan)
+  - Tertiary: #c0c1ff (Deep Indigo)
+  - Dark Base: #0f131c (Obsidian)
+  - Surface variants: Various grays with high contrast on dark
+
+Fonts:
+  - Headlines: Plus Jakarta Sans (700-800 weight, tight letter-spacing)
+  - Body: Inter (400 weight)
+  - Code/Terminal: JetBrains Mono (monospace)
+
+PORTFOLIO SECTIONS:
+1. engineering_overview - Hero section with status badges and CTAs
+2. projects_system_architecture - Project grid with filterable tech stack pills
+3. full_stack_case_study_deep_dive - Case study with tabbed interface
+4. experience_career_journey - Interactive career timeline
+5. portfolio_terminal_contact - Terminal-style contact form
+
+YOUR MISSION: Implement complete JavaScript functionality to make this portfolio FULLY INTERACTIVE.
+
+========================================================================
+CRITICAL FEATURES TO IMPLEMENT
+========================================================================
+
+[1] NAVIGATION SYSTEM
+   - Header nav links click to navigate to sections
+   - Links have [data-path] attributes (overview, projects, case-study, experience, contact)
+   - Active nav item shows primary color + underline
+   - Smooth scroll-to behavior when clicking links
+   - Mobile hamburger menu (if applicable)
+   - All internal links work seamlessly
+
+[2] PROJECT GRID FILTERS (projects_system_architecture)
+   ★ PRIORITY - This is heavily used
+   - Tech stack filter pills are clickable (tags like "React", "Go", "PostgreSQL", etc.)
+   - Clicking a pill toggles its active state
+   - Active pills show: emerald border + emerald background + status dot
+   - Inactive pills show: faded gray appearance
+   - Projects filter dynamically based on selected tech stacks
+   - Multi-select allowed (multiple filters active at once)
+   - Project cards fade in/out smoothly (no jarring appearance)
+   - "Clear Filters" button resets all selections
+   - Cards have hover effects: slight scale, border glow
+
+[3] CASE STUDY TABS (full_stack_case_study_deep_dive)
+   ★ PRIORITY - Complex interaction pattern
+   - Multiple tabs (likely: System Topology, Database Design, Performance Metrics)
+   - Clicking a tab header shows its corresponding content panel
+   - Only ONE tab content visible at a time
+   - Tab headers show active state: emerald color + underline/border
+   - Content transitions smoothly (fade + optional slide animation)
+   - No overlapping or flickering of content
+   - Tab state persists if user scrolls then returns
+
+[4] INTERACTIVE TIMELINE (experience_career_journey)
+   ★ PRIORITY - Important visual feature
+   - Timeline has vertical line with milestone nodes
+   - Each node is clickable
+   - Clicking a node expands to show details (role, achievements, metrics)
+   - Details collapse when clicking node again
+   - Smooth height animation when expanding/collapsing
+   - Active node highlights (emerald border/glow)
+   - Mobile: Convert to accordion or horizontal scroll mode
+   - All milestone details are initially hidden, expand on demand
+
+[5] TERMINAL CONTACT FORM (portfolio_terminal_contact)
+   ★ PRIORITY - Form functionality
+   - Form appears as terminal-style interface
+   - Text input fields + submit button
+   - Form validation:
+     • Email field must be valid email format
+     • All required fields must be filled
+     • Show validation errors as terminal output
+   - On successful submission:
+     • Show success message in terminal format
+     • Clear form inputs
+     • Provide feedback: "✓ Message sent successfully"
+   - If validation fails:
+     • Show error message in terminal format
+     • Keep form data (don't clear)
+     • Provide guidance: "✗ Please check X field"
+   - Copy-to-clipboard button on any code blocks (if present)
+
+[6] SMOOTH INTERACTIONS & ANIMATIONS
+   - All buttons/links have hover states with smooth transitions
+   - Scroll-to-section should be smooth (smooth-scroll behavior)
+   - Fade-in animations as sections come into view (scroll reveal)
+   - No jarring or abrupt transitions
+   - Animations should be performant (use CSS transforms, not layout recalculations)
+   - Use CSS transitions (0.3s-0.4s duration) for state changes
+   - Avoid excessive animations that might cause lag
+
+[7] RESPONSIVE DESIGN VERIFICATION
+   - Desktop (≥1024px): Full layout with all features visible
+   - Tablet (768px-1023px): Stacked layout, tabs and filters work
+   - Mobile (<768px): Single column, hamburger menu, all interactions functional
+   - Tech stack pills may horizontal-scroll on mobile
+   - Timeline converts to accordion or single-column view
+   - Font sizes and spacing scale appropriately
+   - Touch-friendly click targets (min 44x44px)
+
+[8] ACCESSIBILITY & KEYBOARD NAVIGATION
+   - Tab through all interactive elements in logical order
+   - Enter key activates buttons/links
+   - Escape key closes modals (if any)
+   - ARIA labels on interactive elements
+   - Role attributes where appropriate (tab, button, etc.)
+   - Heading hierarchy is semantic (h1 > h2 > h3)
+   - Color contrast meets WCAG AA standards (already in design)
+   - Screen reader friendly
+
+========================================================================
+IMPLEMENTATION GUIDELINES
+========================================================================
+
+CODE QUALITY:
+- Write clean, semantic JavaScript (ES6+ syntax preferred)
+- Use vanilla JavaScript (NO heavy frameworks like React/Vue unless necessary)
+- Organize code into logical functions/modules (e.g., initNavigation(), initFilters(), etc.)
+- Add comments for complex logic and state transitions
+- Keep functions focused and single-purpose
+- NO console.log spam in production code (remove debug logs)
+
+CSS & STYLING:
+- Use existing Tailwind configuration (don't add new colors unless necessary)
+- Leverage data-* attributes for JavaScript selectors (avoid brittle class selectors)
+- Use CSS transitions for smooth state changes
+- Avoid heavy animations that tank performance
+- Hover/active states should use primary color (#4edea3) or secondary (#4cd7f6)
+- Maintain the glassmorphic aesthetic (blur, transparency, subtle borders)
+
+STATE MANAGEMENT:
+- Track active filters in an array/set
+- Track active tab index for each tab group
+- Track expanded/collapsed state for timeline nodes
+- Use data-* attributes to store state where appropriate
+- Consider localStorage for persistent filter preferences (optional)
+
+TESTING REQUIREMENTS:
+Before considering the work complete, verify:
+✓ All 5 sections are navigable via header menu
+✓ Project filters work: click pill → filter updates → cards show/hide
+✓ Multi-select filtering works (multiple pills active at once)
+✓ Case study tabs switch smoothly without content overlap
+✓ Timeline nodes expand/collapse with animation
+✓ Contact form validates all fields
+✓ Contact form shows error/success messages
+✓ Mobile layout is responsive and usable
+✓ Keyboard navigation works (Tab, Enter, Escape)
+✓ No console errors or warnings
+✓ Smooth animations at 60fps (no jank/lag)
+✓ Copy-to-clipboard works (if applicable)
+✓ All hover states visible and responsive
+
+========================================================================
+SPECIFIC SECTION IMPLEMENTATION NOTES
+========================================================================
+
+engineering_overview/code.html (584 lines):
+- Hero section with CTA buttons
+- CTA buttons should scroll smoothly to target sections when clicked
+- Use smooth-scroll or scrollIntoView({ behavior: 'smooth' })
+- Status badge with pulsing animation (CSS already in place, just verify)
+- Terminal window showing "live" telemetry (can be static or animated)
+- Optional: Add scroll-reveal animations as user scrolls down
+
+projects_system_architecture/code.html (765 lines):
+- **CRITICAL:** Implement tech stack filtering
+- Each project card has associated tech tags (find in HTML)
+- Filter pills should match project tech tags
+- Click pill → toggle active state → filter projects
+- Show/hide cards based on selected filters
+- Cards should fade in/out smoothly (not flash)
+- Implement "Show all" / "Clear filters" button
+- Card hover animations: scale 1.02, border glow
+
+full_stack_case_study_deep_dive/code.html (652 lines):
+- **CRITICAL:** Implement tab switching
+- Look for tab buttons/headers (likely data-tab or role="tab")
+- Look for corresponding content panels (data-panel or role="tabpanel")
+- Click tab → hide all panels → show selected panel
+- Use fade transition (opacity 0→1) or slide (translateX)
+- Active tab header should show primary color + underline
+- If multiple case studies, each manages its own tab state independently
+
+experience_career_journey/code.html (517 lines):
+- **CRITICAL:** Implement timeline expand/collapse
+- Timeline has vertical line (likely a div or pseudo-element)
+- Nodes are clickable elements (look for data-milestone or similar)
+- Click node → expand details panel
+- Expansion should animate height smoothly (max-height transition)
+- Show/hide details like role, achievements, metrics
+- Mobile: Convert to accordion (single column, always showing content)
+- Timeline line should span the full timeline height
+
+portfolio_terminal_contact/code.html (537 lines):
+- **CRITICAL:** Implement form submission & validation
+- Form fields: name, email, message (check HTML for exact structure)
+- Validation:
+   • Email: must match /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+   • Name: must not be empty
+   • Message: must not be empty
+- On submit:
+   • Prevent default form submission
+   • Validate all fields
+   • If invalid: show error in terminal format, keep form data
+   • If valid: show success message, clear form
+- Terminal output format: use existing HTML structure for output
+- Optional: Disable submit button during "sending" (add loading state)
+- Optional: Copy button for contact info / code snippets
+
+========================================================================
+DELIVERABLES
+========================================================================
+
+Provide the updated HTML file(s) with:
+✓ All original HTML structure preserved (no breaking changes)
+✓ Complete JavaScript implementation for all features listed above
+✓ CSS for animations and transitions (use Tailwind + custom CSS if needed)
+✓ NO external JavaScript libraries (vanilla JS only, or minimal jQuery if helpful)
+✓ Clean, well-commented code that's easy to maintain
+✓ Zero console errors or warnings
+✓ Fully functional prototype ready for demo/portfolio use
+✓ Mobile-responsive and works on all screen sizes
+✓ All interactive features tested and working
+
+IF MULTIPLE FILES:
+- Provide each updated HTML file separately, OR
+- Provide a single consolidated HTML file that includes all sections, OR
+- Your choice based on what makes most sense
+
+========================================================================
+CONSTRAINTS
+========================================================================
+
+DO:
+✓ Keep HTML structure intact (only add/modify JavaScript and styles)
+✓ Use existing Tailwind configuration (colors, spacing, fonts already defined)
+✓ Write semantic, accessible code (ARIA labels, keyboard nav, proper hierarchy)
+✓ Test on mobile/tablet/desktop
+✓ Use CSS transforms for animations (better performance)
+✓ Add thoughtful comments to explain complex logic
+✓ Verify zero console errors before delivery
+
+DO NOT:
+✗ Refactor HTML structure unnecessarily
+✗ Add new external CSS frameworks
+✗ Use heavy JavaScript frameworks (React, Vue, etc.)
+✗ Break existing styling or design
+✗ Add console.log statements in final code
+✗ Ignore mobile responsiveness
+✗ Skip form validation
+✗ Leave console errors
+
+========================================================================
+OPTIONAL ENHANCEMENTS (If Time Permits)
+========================================================================
+
+- Save filter preferences to localStorage (persist across page reloads)
+- Add parallax scrolling on hero section
+- Animate numbers/counters when they scroll into view
+- Add keyboard shortcuts (/, arrow keys for timeline navigation)
+- Add loading state animation to form submission
+- Implement form submission to actual backend endpoint
+- Add more sophisticated terminal-style typing animations
+- Add "scroll to top" button that appears on scroll
+- Animate section headings on scroll reveal
+
+========================================================================
+SUCCESS CRITERIA
+========================================================================
+
+You will know this is done when:
+1. User can navigate through all 5 sections smoothly
+2. Project filtering works: filters toggle, cards show/hide, multi-select works
+3. Case study tabs work: tabs switch, content changes, smooth transitions
+4. Timeline works: nodes expand/collapse, animation is smooth
+5. Contact form works: validates, shows feedback, clears on success
+6. Mobile: All features work on small screens, layout is responsive
+7. Keyboard: Can Tab through all interactive elements, Enter activates them
+8. Performance: Animations are smooth at 60fps, no lag or jank
+9. Console: ZERO errors or warnings
+10. Polish: Hover states visible, transitions smooth, design feels intentional
+
+========================================================================
+END OF PROMPT
+
+Use this prompt with Claude Opus 4.6 along with your 5 HTML files.
+Claude will deliver a fully functional, interactive portfolio prototype.
+========================================================================

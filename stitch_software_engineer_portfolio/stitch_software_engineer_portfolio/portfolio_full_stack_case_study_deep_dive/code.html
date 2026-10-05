@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed": "#07006c", "surface": "#0f131c", "surface-tint": "#4edea3", "on-primary-container": "#00422b", "on-background": "#dfe2ee", "surface-container-lowest": "#0a0e16", "primary-container": "#10b981", "on-primary-fixed-variant": "#005236", "on-secondary-fixed-variant": "#004e5c", "on-surface-variant": "#bbcabf", "tertiary-fixed": "#e1e0ff", "surface-dim": "#0f131c", "primary": "#4edea3", "on-primary-fixed": "#002113", "tertiary-fixed-dim": "#c0c1ff", "secondary-container": "#03b5d3", "error-container": "#93000a", "surface-container-highest": "#31353e", "inverse-on-surface": "#2c3039", "secondary": "#4cd7f6", "background": "#0f131c", "on-surface": "#dfe2ee", "tertiary-container": "#9699ff", "inverse-primary": "#006c49", "tertiary": "#c0c1ff", "primary-fixed": "#6ffbbe", "on-tertiary": "#1000a9", "surface-container-low": "#181c24", "on-error": "#690005", "surface-variant": "#31353e", "on-secondary-container": "#00424e", "outline-variant": "#3c4a42", "error": "#ffb4ab", "on-secondary": "#003640", "surface-container": "#1c2028", "outline": "#86948a", "surface-container-high": "#262a33", "inverse-surface": "#dfe2ee", "primary-fixed-dim": "#4edea3", "surface-bright": "#353942", "on-secondary-fixed": "#001f26", "on-tertiary-fixed-variant": "#2f2ebe", "on-tertiary-container": "#1d17b2", "secondary-fixed": "#acedff", "secondary-fixed-dim": "#4cd7f6", "on-error-container": "#ffdad6", "on-primary": "#003824" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-lg": "1.5rem", "margin": "2rem", "margin-mobile": "1.25rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter-mobile": "1rem", "gutter": "1.5rem", "space-md": "1rem", "space-xl": "2.5rem" }, "fontFamily": { "display": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "body-sm": ["Inter"], "label-sm": ["JetBrains Mono"], "body-md": ["Inter"], "display-mobile": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "label-md": ["JetBrains Mono"], "headline-lg": ["Plus Jakarta Sans"], "code-block": ["JetBrains Mono"] }, "fontSize": { "display": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "500" }], "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "800" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700" }], "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "code-block": ["13px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="h-16 max-w-7xl mx-auto px-6 flex items-center justify-between gap-4"><div class="flex items-center gap-3 shrink-0"><img alt="Dev Terminal Monogram" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VqziLoQlOzZ9Bs8cB6nKj50dSlbMnagRV3bWHNzjmIA47qT92egNGeo3BzQCW5uJJpkVD0BTmWovGaTUAJsyPdAO9zTB8d6KY78ep6qCs3yO-wyVNzlaujdH6JCSePlrIXorrg1SmtUx60LVDJEEgevp1Zdsn15SLAWJl7SHyuzsSQ64qByyitfRo4PXJYCcIfnVzvBYUdC9RZWTZmamy3hQZXvYqY1rAMaVH-ZHvYpruKRra_jNrNgFA"/><div class="flex flex-col leading-tight"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">Alex Rivera</span></div><div class="hidden xl:flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface-container-low border border-outline-variant/40"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Available for Roles / Contracts</span></div></div><nav class="hidden lg:flex items-center gap-6" data-active-classes="text-primary border-b-2 border-primary"><a class="text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm py-1 transition-colors" data-path="overview" href="#">Overview</a><a class="text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm py-1 transition-colors" data-path="projects" href="#">Projects & Architecture</a><a aria-current="page" class="font-body-sm py-1 transition-colors text-primary border-b-2 border-primary" data-path="case-study" href="#">Full-Stack Case Study</a><a class="text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm py-1 transition-colors" data-path="experience" href="#">Experience & Systems</a><a class="text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm py-1 transition-colors" data-path="contact" href="#">Terminal & Contact</a></nav><div class="flex items-center gap-3 shrink-0"><div class="hidden sm:flex items-center gap-2"><a class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all" href="#"><span class="font-label-sm text-label-sm">GitHub</span><span class="px-1.5 py-0.2 rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface">1.2k ★</span></a><a class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant/30 font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all" href="#">LinkedIn</a></div><a class="flex items-center gap-1.5 px-3 py-1.5 rounded bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:bg-primary-fixed transition-colors shadow-[0_0_12px_rgba(78,222,163,0.25)]" href="#"><span class="material-symbols-outlined text-[16px]">download</span><span>Resume PDF</span></a><div class="relative flex items-center shrink-0"><div class="p-0.5 rounded-full ring-1 ring-primary/40"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAqawwEJImrkECVYsy89y8lWKK3QvlelPlyYBLpxJPqIXiOKcpOnu2Ym8gS72Km9x02_fiHoM2XzYAavNALAXdTea8-LhxNomYdPNDA_3bYCZLuLQ5LkC3evI6yr40j34uqlqGirWXHZ2tqio3YwnEYJK-jaYjzkcp7aMOptc8HN901Wd9ut9MYEJlFdWvgI8tt3GkU86Jcfv6LozZ2rvsG3K6gsLxN4EKrFCeHswN2_-7WRW_NMtU"/></div></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Subtle Background Grid & Ambient Glow -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute top-0 left-1/4 w-[600px] h-[350px] bg-primary/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+<div class="absolute top-48 right-1/4 w-[500px] h-[300px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<!-- Header Section -->
+<div class="max-w-7xl mx-auto px-6 pt-10 pb-8 w-full">
+<div class="flex flex-wrap items-center gap-2 mb-4">
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-primary font-label-sm text-label-sm uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+<span class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
+          System Architecture Teardown
+        </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">/</span>
+<span class="text-secondary font-label-sm text-label-sm">Engineering Case Study #01</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="lg:col-span-8 space-y-4">
+<h1 class="font-display text-display text-on-surface font-extrabold tracking-tight">
+            Designing & Scaling <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary">CloudMesh</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
+            A full-stack, multi-tenant workspace platform engineered from the ground up to support 12,000+ organizations with strict cryptographic tenant isolation, optimistic synchronization, and sub-50ms p95 response times.
+          </p>
+</div>
+<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end items-stretch lg:items-end">
+<a class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded bg-primary text-on-primary font-label-sm text-label-sm font-bold hover:bg-primary-fixed shadow-md shadow-primary/20 transition-all hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined text-[18px]">launch</span>
+            Live Production App
+          </a>
+<div class="flex items-center gap-2">
+<a class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm hover:text-secondary hover:bg-surface-bright transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined text-[16px]">code</span>
+              Source Repo
+            </a>
+<a class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm hover:text-primary hover:bg-surface-bright transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+              Arch Spec (PDF)
+            </a>
+</div>
+</div>
+</div>
+<!-- Metadata Telemetry Ribbon -->
+<div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex flex-col gap-1 p-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Role</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Principal Architect</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Full-Stack & Systems</span>
+</div>
+<div class="flex flex-col gap-1 p-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Scale & Tenancy</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-semibold">12,400+ Orgs</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">8.6M active documents</span>
+</div>
+<div class="flex flex-col gap-1 p-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Production Stack</span>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold">Next.js + Go</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">PostgreSQL (RLS) + Redis</span>
+</div>
+<div class="flex flex-col gap-1 p-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">System Health</span>
+<div class="flex items-center gap-2">
+<span class="h-2.5 w-2.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">99.98%</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Verified SLA Runtime</span>
+</div>
+</div>
+</div>
+<!-- Case Study Showcase Hero Graphic -->
+<div class="max-w-7xl mx-auto px-6 my-6">
+<div class="relative rounded-xl overflow-hidden bg-surface-container shadow-xl">
+<!-- Terminal Window Mock Header -->
+<div class="flex items-center justify-between px-4 py-3 bg-surface-container-highest">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error/70 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-secondary-container/70 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-primary/70 inline-block"></span>
+<span class="ml-3 font-code-block text-code-block text-on-surface-variant">cloudmesh-production-cluster-topology.live</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-primary">region: us-east-1 (multi-az)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">p95: 41.8ms</span>
+</div>
+</div>
+<div class="p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+<div class="lg:col-span-7 space-y-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">security</span>
+              Zero-Trust Tenant Boundary Enforced
+            </div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">
+              Autonomous Workspaces with Row-Level Cryptographic Isolation
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Standard SaaS implementations risk accidental cross-tenant data leaks when tenant filters are omitted from complex ORM queries. CloudMesh eliminates this failure mode entirely at the database engine level via session-scoped PostgreSQL Row Level Security (RLS) coupled with a zero-allocation Go connection proxy.
+            </p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">TanStack Query v5</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">Zustand Sync</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">Go gRPC Engine</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">PgBouncer Pool</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">Envoy Gateway</span>
+</div>
+</div>
+<div class="lg:col-span-5 flex justify-center">
+<div class="w-full rounded-lg overflow-hidden bg-surface-container-lowest p-4 shadow-inner">
+<img class="w-full h-64 object-cover rounded shadow-md" data-alt="High fidelity dark mode architectural dashboard showing telemetry graphs, live node connections, microservices health indicators, and PostgreSQL connection pool gauges with mint emerald and cyan glowing graphs." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4RmfIK-GmgQxEJ3sa3D_NAPM5M1YqQx2Iv4GK4kQcghwB_3vwAlbHJb7i-4ktQJhQIETTNDlD7sdUZp72Wm8K4zuMob2CUMACeJc9rJ-QsBlqDuoI63L182sGcsiHFIm6U4T_vj4j0T3DQ3SrP-FMI9N3nK4EDtytK1pb1RQhR1A2CdtYRDndnEG4ACJ260hf7KwYBq_qDi35hmn3svH-O3m8fTyQgHeRIwNWobnGSa9sho1wbaQg"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tabbed Deep Dive Section -->
+<div class="max-w-7xl mx-auto px-6 py-12">
+<!-- Tab Controls -->
+<div class="flex flex-wrap gap-2 pb-4 mb-8">
+<button class="tab-btn active px-4 py-2 rounded font-label-sm text-label-sm tracking-wide transition-all bg-primary text-on-primary font-bold shadow-sm" id="tab-btn-overview" onclick="switchTab('overview')">
+          01. Problem & System Constraints
+        </button>
+<button class="tab-btn px-4 py-2 rounded font-label-sm text-label-sm tracking-wide transition-all bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-bright shadow-sm" id="tab-btn-architecture" onclick="switchTab('architecture')">
+          02. Full-Stack Blueprint & Flow
+        </button>
+<button class="tab-btn px-4 py-2 rounded font-label-sm text-label-sm tracking-wide transition-all bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-bright shadow-sm" id="tab-btn-challenges" onclick="switchTab('challenges')">
+          03. Code & Hard Engineering Decisions
+        </button>
+<button class="tab-btn px-4 py-2 rounded font-label-sm text-label-sm tracking-wide transition-all bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-bright shadow-sm" id="tab-btn-benchmarks" onclick="switchTab('benchmarks')">
+          04. Production Benchmarks & SLA
+        </button>
+</div>
+<!-- TAB 1: Problem & Constraints -->
+<div class="tab-panel space-y-8" id="tab-panel-overview">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-7 space-y-6">
+<div class="space-y-2">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">The Baseline Challenge</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface font-bold">Scaling Multi-Tenancy Beyond Simple WHERE Clauses</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              When software products scale past thousands of businesses, tenant isolation via application-layer SQL filtering (<code class="text-primary font-code-block">WHERE tenant_id = ?</code>) introduces severe operational fragility. A single forgotten clause in a nested join or raw reporting query can leak proprietary organizational assets.
+            </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Simultaneously, enterprise workspaces demanded sub-second real-time collaboration with atomic optimistic updates: when a user in Tokyo modifies a document structure, collaborators in London must see instant local convergence without reconciliation jank or database locking storms.
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+<div class="p-4 rounded-lg bg-surface-container shadow-sm space-y-2">
+<div class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<span class="font-headline-sm text-headline-sm font-semibold">Legacy Pitfalls</span>
+</div>
+<ul class="font-body-sm text-body-sm text-on-surface-variant space-y-1.5 list-disc list-inside">
+<li>Tenant leak vulnerability in custom reporting</li>
+<li>Write locking spikes during batch sync</li>
+<li>Client UI freeze on 3G network jitter</li>
+<li>Overloaded DB connection limits at peak</li>
+</ul>
+</div>
+<div class="p-4 rounded-lg bg-surface-container shadow-sm space-y-2">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+<span class="font-headline-sm text-headline-sm font-semibold">Target SLA Goals</span>
+</div>
+<ul class="font-body-sm text-body-sm text-on-surface-variant space-y-1.5 list-disc list-inside">
+<li>Zero cross-tenant bleed at DB kernel level</li>
+<li>Sub-150ms P95 API latency globally</li>
+<li>Sub-50ms optimistic mutation response</li>
+<li>99.95% strict monthly platform uptime</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 space-y-6">
+<div class="p-6 rounded-xl bg-surface-container-low shadow-sm space-y-4">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Tenant Partitioning Matrix</span>
+<!-- Inline Data Visualization: Tenancy Load Distribution -->
+<div class="space-y-3">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1 text-on-surface">
+<span>Active Shared Tier Tenants (Pool)</span>
+<span class="text-secondary font-bold">11,840 orgs (72%)</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary rounded" style="width: 72%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1 text-on-surface">
+<span>Enterprise Tier (Dedicated RLS Shards)</span>
+<span class="text-primary font-bold">560 orgs (22%)</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary rounded" style="width: 22%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1 text-on-surface">
+<span>GovCloud Air-Gapped Instances</span>
+<span class="text-tertiary font-bold">42 orgs (6%)</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-tertiary rounded" style="width: 6%;"></div>
+</div>
+</div>
+</div>
+<div class="p-3.5 rounded bg-surface-container-lowest font-code-block text-code-block text-on-surface-variant space-y-1">
+<div class="text-secondary">// Security Verification Vector</div>
+<div>SEC_AUDIT_MODE: <span class="text-primary">ENFORCED_KERNEL</span></div>
+<div>POSTGRES_RLS_POLICY: <span class="text-primary">ACTIVE_STRICT</span></div>
+<div>SESSION_VAR: <span class="text-on-surface">'app.current_tenant_id'</span></div>
+<div>LEAK_PROBABILITY: <span class="text-primary">< 0.000001%</span></div>
+</div>
+</div>
+<!-- Architectural Quote Callout -->
+<div class="p-5 rounded-xl bg-surface-container-high shadow-sm flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[28px] shrink-0">terminal</span>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface italic">
+                  "Security cannot rely on human vigilance during 2 AM refactors. We shifted isolation down to PostgreSQL Row-Level Security so that no query—accidental or malicious—can touch out-of-scope rows."
+                </p>
+<span class="font-label-sm text-label-sm text-secondary font-bold block mt-2">— Alex Rivera, Architectural Log</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 2: Full-Stack Blueprint (Interactive Layer Breakdown) -->
+<div class="tab-panel hidden space-y-8" id="tab-panel-architecture">
+<div class="space-y-2">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">System Topology</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface font-bold">End-to-End Multi-Tier Architectural Topology</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+            Examine the decoupled layers from the client browser edge down to the transactional storage shards.
+          </p>
+</div>
+<!-- 4-Layer Architecture Visual Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Layer 1: Client Edge -->
+<div class="p-5 rounded-xl bg-surface-container hover:bg-surface-container-high transition-all shadow-sm space-y-4 flex flex-col justify-between">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest font-label-sm text-label-sm text-primary">Layer 01</span>
+<span class="material-symbols-outlined text-primary text-[20px]">devices</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Client Tier</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Next.js 14 App Router, TanStack Query v5 optimistic mutations, Zustand document store, native WebSocket presence client.
+              </p>
+</div>
+<div class="space-y-2 pt-2">
+<div class="p-2 rounded bg-surface-container-lowest font-code-block text-code-block text-on-surface">
+<span class="text-secondary">•</span> Optimistic State Rollback
+              </div>
+<div class="p-2 rounded bg-surface-container-lowest font-code-block text-code-block text-on-surface">
+<span class="text-secondary">•</span> Presence Heartbeat (3s)
+              </div>
+</div>
+</div>
+<!-- Layer 2: Ingress & Edge Gateway -->
+<div class="p-5 rounded-xl bg-surface-container hover:bg-surface-container-high transition-all shadow-sm space-y-4 flex flex-col justify-between">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest font-label-sm text-label-sm text-secondary">Layer 02</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">router</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Ingress Gateway</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Cloudflare CDN edge cache, Envoy proxy cluster terminating TLS, EdDSA JWT verification, and Redis token bucket rate limiting.
+              </p>
+</div>
+<div class="space-y-2 pt-2">
+<div class="p-2 rounded bg-surface-container-lowest font-code-block text-code-block text-on-surface">
+<span class="text-primary">•</span> Distributed Rate Limiter
+              </div>
+<div class="p-2 rounded bg-surface-container-lowest font-code-block text-code-block text-on-surface">
+<span class="text-primary">•</span> Tenant Context Injection
+              </div>
+</div>
+</div>
+<!-- Layer 3: Microservices Core -->
+<div class="p-5 rounded-xl bg-surface-container hover:bg-surface-container-high transition-all shadow-sm space-y-4 flex flex-col justify-between">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest font-label-sm text-label-sm text-tertiary">Layer 03</span>
+<span class="material-symbols-outlined text-tertiary text-[20px]">dns</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Go Microservices</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                High-concurrency Go microservices interacting over gRPC with Protobuf contracts. Workspaces, Real-Time Sync, and Audit logging engines.
+              </p>
+</div>
+<div class="space-y-2 pt-2">
+<div class="p-2 rounded bg-surface-container-lowest font-code-block text-code-block text-on-surface">
+<span class="text-tertiary">•</span> Zero-Allocation Parsers
+              </div>
+<div class="p-2 rounded bg-surface-container-lowest font-code-block text-code-block text-on-surface">
+<span class="text-tertiary">•</span> Goroutine Worker Pools
+              </div>
+</div>
+</div>
+<!-- Layer 4: Storage & Caching Layer -->
+<div class="p-5 rounded-xl bg-surface-container hover:bg-surface-container-high transition-all shadow-sm space-y-4 flex flex-col justify-between">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest font-label-sm text-label-sm text-primary">Layer 04</span>
+<span class="material-symbols-outlined text-primary text-[20px]">database</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Persistence & Cache</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                PostgreSQL with PgBouncer connection pooling, dynamic RLS context injection, Redis 7 Cluster for pub/sub ephemeral presence.
+              </p>
+</div>
+<div class="space-y-2 pt-2">
+<div class="p-2 rounded bg-surface-container-lowest font-code-block text-code-block text-on-surface">
+<span class="text-secondary">•</span> Postgres Row Level Security
+              </div>
+<div class="p-2 rounded bg-surface-container-lowest font-code-block text-code-block text-on-surface">
+<span class="text-secondary">•</span> Redis Room Sharding
+              </div>
+</div>
+</div>
+</div>
+<!-- SVG Sequence Architecture Flowchart -->
+<div class="p-6 rounded-xl bg-surface-container-low shadow-sm space-y-4">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Synchronous Mutation & Broadcast Pipeline</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time lifecycle of an atomic workspace state modification</p>
+</div>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+              Live Pipeline Latency: < 38ms Mean
+            </span>
+</div>
+<!-- Visual Flow SVG Diagram -->
+<div class="w-full overflow-x-auto py-2">
+<svg class="w-full min-w-[700px] h-32 text-on-surface" fill="none" viewbox="0 0 800 120" xmlns="http://www.w3.org/2000/svg">
+<!-- Nodes -->
+<rect fill="#1c2028" height="60" rx="6" stroke="#3c4a42" stroke-width="1.5" width="130" x="10" y="30"></rect>
+<text fill="#4edea3" font-family="Plus Jakarta Sans" font-size="12" font-weight="700" text-anchor="middle" x="75" y="55">Browser Client</text>
+<text fill="#bbcabf" font-family="JetBrains Mono" font-size="10" text-anchor="middle" x="75" y="73">Optimistic Render</text>
+<!-- Connector 1 -->
+<path d="M140 60 H200" stroke="#4edea3" stroke-dasharray="4 4" stroke-width="2"></path>
+<polygon fill="#4edea3" points="198,56 206,60 198,64"></polygon>
+<!-- Node 2 -->
+<rect fill="#1c2028" height="60" rx="6" stroke="#3c4a42" stroke-width="1.5" width="140" x="206" y="30"></rect>
+<text fill="#4cd7f6" font-family="Plus Jakarta Sans" font-size="12" font-weight="700" text-anchor="middle" x="276" y="55">Envoy Proxy</text>
+<text fill="#bbcabf" font-family="JetBrains Mono" font-size="10" text-anchor="middle" x="276" y="73">JWT + Rate Limit</text>
+<!-- Connector 2 -->
+<path d="M346 60 H406" stroke="#4cd7f6" stroke-width="2"></path>
+<polygon fill="#4cd7f6" points="404,56 412,60 404,64"></polygon>
+<!-- Node 3 -->
+<rect fill="#1c2028" height="60" rx="6" stroke="#3c4a42" stroke-width="1.5" width="150" x="412" y="30"></rect>
+<text fill="#c0c1ff" font-family="Plus Jakarta Sans" font-size="12" font-weight="700" text-anchor="middle" x="487" y="55">Go Core Engine</text>
+<text fill="#bbcabf" font-family="JetBrains Mono" font-size="10" text-anchor="middle" x="487" y="73">gRPC + Ingest Lock</text>
+<!-- Connector 3 -->
+<path d="M562 60 H622" stroke="#c0c1ff" stroke-width="2"></path>
+<polygon fill="#c0c1ff" points="620,56 628,60 620,64"></polygon>
+<!-- Node 4 -->
+<rect fill="#1c2028" height="60" rx="6" stroke="#3c4a42" stroke-width="1.5" width="160" x="628" y="30"></rect>
+<text fill="#4edea3" font-family="Plus Jakarta Sans" font-size="12" font-weight="700" text-anchor="middle" x="708" y="55">PostgreSQL (RLS)</text>
+<text fill="#bbcabf" font-family="JetBrains Mono" font-size="10" text-anchor="middle" x="708" y="73">Scoped COMMIT</text>
+</svg>
+</div>
+</div>
+</div>
+<!-- TAB 3: Code Snippets & Engineering Solutions -->
+<div class="tab-panel hidden space-y-8" id="tab-panel-challenges">
+<div class="space-y-2">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Implementation Depth</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface font-bold">Hard Architectural Decisions & Code Snippets</h3>
+</div>
+<!-- Challenge 1: Postgres RLS & Go Middleware -->
+<div class="p-6 rounded-xl bg-surface-container space-y-4 shadow-sm">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-3">
+<span class="p-1.5 rounded bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</span>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Challenge 1: Zero-Leak Postgres RLS with Transactional Session Context</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Preventing developer omission errors from exposing cross-tenant rows</p>
+</div>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container-high text-on-surface hover:text-primary font-label-sm text-label-sm transition-all" onclick="copySnippet('code-snippet-1', this)">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span>Copy SQL & Go</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Instead of relying on ORM filters, our Go middleware intercepts every HTTP/gRPC request, extracts the validated tenant ID from the signed JWT claim, and issues a local session parameter inside the database transaction before running queries.
+          </p>
+<!-- Code Window -->
+<div class="rounded-lg overflow-hidden bg-surface-container-lowest shadow-md">
+<div class="flex items-center justify-between px-4 py-2 bg-surface-container-highest">
+<span class="font-code-block text-code-block text-on-surface-variant">tenant_isolation_middleware.go & rls_policy.sql</span>
+<span class="font-label-sm text-label-sm text-secondary">Go 1.22 + PostgreSQL 16</span>
+</div>
+<pre class="p-4 font-code-block text-code-block overflow-x-auto text-on-surface leading-relaxed" id="code-snippet-1"><code><span class="text-on-surface-variant">// 1. Database Row Level Security Definition</span>
+<span class="text-secondary">ALTER TABLE</span> workspaces <span class="text-secondary">ENABLE ROW LEVEL SECURITY</span>;
+<span class="text-secondary">CREATE POLICY</span> tenant_isolation_policy <span class="text-secondary">ON</span> workspaces
+    <span class="text-secondary">FOR ALL</span>
+    <span class="text-secondary">USING</span> (tenant_id = <span class="text-primary">NULLIF</span>(current_setting(<span class="text-tertiary">'app.current_tenant_id'</span>, <span class="text-primary">true</span>), <span class="text-tertiary">''</span>)::uuid);
+
+<span class="text-on-surface-variant">// 2. Go Transaction Context Injector</span>
+<span class="text-secondary">func</span> (s *WorkspaceService) <span class="text-primary">WithTenantTx</span>(ctx context.Context, fn <span class="text-secondary">func</span>(tx *sql.Tx) <span class="text-secondary">error</span>) <span class="text-secondary">error</span> {
+    tenantID := ctx.Value(TenantKey).(uuid.UUID)
+    tx, err := s.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelReadCommitted})
+    <span class="text-secondary">if</span> err != nil { <span class="text-secondary">return</span> err }
+    <span class="text-secondary">defer</span> tx.Rollback()
+
+    <span class="text-on-surface-variant">// Set transaction-scoped configuration variable</span>
+    _, err = tx.ExecContext(ctx, <span class="text-tertiary">"SELECT set_config('app.current_tenant_id', $1, true)"</span>, tenantID.String())
+    <span class="text-secondary">if</span> err != nil { <span class="text-secondary">return</span> fmt.Errorf(<span class="text-tertiary">"failed setting tenant scope: %w"</span>, err) }
+
+    <span class="text-secondary">if</span> err := fn(tx); err != nil { <span class="text-secondary">return</span> err }
+    <span class="text-secondary">return</span> tx.Commit()
+}</code></pre>
+</div>
+</div>
+<!-- Challenge 2: Frontend Optimistic Mutations with Reversion -->
+<div class="p-6 rounded-xl bg-surface-container space-y-4 shadow-sm">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-3">
+<span class="p-1.5 rounded bg-secondary/10 text-secondary">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+</span>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Challenge 2: TanStack Query v5 Optimistic Mutation with Automatic Rollback</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Eliminating UI latency for collaborative canvas block repositioning</p>
+</div>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container-high text-on-surface hover:text-secondary font-label-sm text-label-sm transition-all" onclick="copySnippet('code-snippet-2', this)">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span>Copy TypeScript</span>
+</button>
+</div>
+<div class="rounded-lg overflow-hidden bg-surface-container-lowest shadow-md">
+<div class="flex items-center justify-between px-4 py-2 bg-surface-container-highest">
+<span class="font-code-block text-code-block text-on-surface-variant">useWorkspaceMutation.ts</span>
+<span class="font-label-sm text-label-sm text-primary">TypeScript 5.4</span>
+</div>
+<pre class="p-4 font-code-block text-code-block overflow-x-auto text-on-surface leading-relaxed" id="code-snippet-2"><code><span class="text-secondary">export const</span> <span class="text-primary">useUpdateNodePosition</span> = (workspaceId: <span class="text-tertiary">string</span>) => {
+  <span class="text-secondary">const</span> queryClient = <span class="text-primary">useQueryClient</span>();
+  <span class="text-secondary">return</span> <span class="text-primary">useMutation</span>({
+    mutationFn: (update: NodeUpdatePayload) => api.patch(<span class="text-tertiary">`/workspaces/${workspaceId}/nodes`</span>, update),
+    onMutate: <span class="text-secondary">async</span> (newPosition) => {
+      <span class="text-secondary">await</span> queryClient.cancelQueries({ queryKey: [<span class="text-tertiary">'workspace'</span>, workspaceId] });
+      <span class="text-secondary">const</span> snapshot = queryClient.getQueryData<Workspace>([<span class="text-tertiary">'workspace'</span>, workspaceId]);
+      
+      <span class="text-on-surface-variant">// Optimistically update the UI store instantly</span>
+      queryClient.setQueryData<Workspace>([<span class="text-tertiary">'workspace'</span>, workspaceId], (old) => 
+        old ? { ...old, nodes: old.nodes.map(n => n.id === newPosition.id ? { ...n, ...newPosition } : n) } : old
+      );
+      <span class="text-secondary">return</span> { snapshot };
+    },
+    onError: (_err, _vars, context) => {
+      <span class="text-on-surface-variant">// Seamlessly rollback state if backend rejects or network partitions</span>
+      <span class="text-secondary">if</span> (context?.snapshot) {
+        queryClient.setQueryData([<span class="text-tertiary">'workspace'</span>, workspaceId], context.snapshot);
+      }
+    }
+  });
+};</code></pre>
+</div>
+</div>
+</div>
+<!-- TAB 4: Benchmarks & Measurable Outcomes -->
+<div class="tab-panel hidden space-y-8" id="tab-panel-benchmarks">
+<div class="space-y-2">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Metrics & Results</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface font-bold">Hard Measurable Performance Outcomes</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+            Stress-tested with continuous k6 distributed load generators running 50,000 virtual users across multi-region endpoints.
+          </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Metric Card 1 -->
+<div class="p-6 rounded-xl bg-surface-container space-y-4 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">API P95 Latency</span>
+<span class="p-1 rounded bg-secondary/15 text-secondary material-symbols-outlined text-[18px]">speed</span>
+</div>
+<div class="flex items-baseline gap-3">
+<span class="font-display text-display font-black text-primary">42ms</span>
+<span class="font-label-md text-label-md line-through text-on-surface-variant">340ms</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              An <span class="text-primary font-bold">87.6% latency reduction</span> achieved by migrating workspace retrieval from Node.js runtime to compiled Go with Redis memory layers.
+            </p>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded overflow-hidden">
+<div class="bg-primary h-full rounded" style="width: 88%;"></div>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="p-6 rounded-xl bg-surface-container space-y-4 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">DB Connection Saturation</span>
+<span class="p-1 rounded bg-tertiary/15 text-tertiary material-symbols-outlined text-[18px]">storage</span>
+</div>
+<div class="flex items-baseline gap-3">
+<span class="font-display text-display font-black text-secondary">-78%</span>
+<span class="font-label-md text-label-md text-on-surface-variant">PgBouncer</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Transaction-level pooling prevented connection exhaustion storms during synchronized morning active tenant spikes.
+            </p>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded overflow-hidden">
+<div class="bg-secondary h-full rounded" style="width: 78%;"></div>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="p-6 rounded-xl bg-surface-container space-y-4 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Core Web Vitals</span>
+<span class="p-1 rounded bg-primary/15 text-primary material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div class="flex items-baseline gap-3">
+<span class="font-display text-display font-black text-on-surface">99/100</span>
+<span class="font-label-md text-label-md text-primary font-bold">Lighthouse</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Zero layout shifts, sub-0.8s Largest Contentful Paint (LCP) across global CDN nodes using Next.js static asset streaming.
+            </p>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded overflow-hidden">
+<div class="bg-primary h-full rounded" style="width: 99%;"></div>
+</div>
+</div>
+</div>
+<!-- Comparative SVG Latency Graph -->
+<div class="p-6 rounded-xl bg-surface-container-low shadow-sm space-y-4">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Latency Profile Under Concurrent Load (RPS: 0 to 100k)</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Comparing legacy architecture vs CloudMesh v2 Go/Postgres RLS Pipeline</p>
+</div>
+<div class="flex items-center gap-4 font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-error inline-block"></span>
+<span class="text-on-surface-variant">Legacy Node Stack</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-primary inline-block"></span>
+<span class="text-primary font-bold">CloudMesh v2</span>
+</div>
+</div>
+</div>
+<div class="w-full overflow-x-auto py-2">
+<svg class="w-full min-w-[700px] h-48 text-on-surface" fill="none" viewbox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+<!-- Grid Lines -->
+<line stroke="#31353e" stroke-dasharray="2 4" x1="40" x2="680" y1="20" y2="20"></line>
+<line stroke="#31353e" stroke-dasharray="2 4" x1="40" x2="680" y1="70" y2="70"></line>
+<line stroke="#31353e" stroke-dasharray="2 4" x1="40" x2="680" y1="120" y2="120"></line>
+<line stroke="#31353e" x1="40" x2="680" y1="170" y2="170"></line>
+<!-- Y-Axis Labels -->
+<text fill="#bbcabf" font-family="JetBrains Mono" font-size="10" text-anchor="end" x="30" y="24">400ms</text>
+<text fill="#bbcabf" font-family="JetBrains Mono" font-size="10" text-anchor="end" x="30" y="74">250ms</text>
+<text fill="#bbcabf" font-family="JetBrains Mono" font-size="10" text-anchor="end" x="30" y="124">100ms</text>
+<text fill="#bbcabf" font-family="JetBrains Mono" font-size="10" text-anchor="end" x="30" y="174">0ms</text>
+<!-- Legacy Curve (Degrading sharply) -->
+<path d="M50 140 C 150 135, 250 110, 350 85 C 450 60, 550 40, 670 25" fill="none" stroke="#ffb4ab" stroke-width="2.5"></path>
+<!-- CloudMesh v2 Curve (Near flatline) -->
+<path d="M50 160 C 150 159, 250 158, 350 156 C 450 154, 550 152, 670 148" fill="none" stroke="#4edea3" stroke-width="3"></path>
+<circle cx="670" cy="148" fill="#4edea3" r="4"></circle>
+<!-- X-Axis Labels -->
+<text fill="#bbcabf" font-family="JetBrains Mono" font-size="10" x="50" y="190">10k RPS</text>
+<text fill="#bbcabf" font-family="JetBrains Mono" font-size="10" x="250" y="190">35k RPS</text>
+<text fill="#bbcabf" font-family="JetBrains Mono" font-size="10" x="450" y="190">70k RPS</text>
+<text fill="#bbcabf" font-family="JetBrains Mono" font-size="10" text-anchor="end" x="660" y="190">100k RPS</text>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Technical Takeaway Banner -->
+<div class="max-w-7xl mx-auto px-6 py-8">
+<div class="p-8 rounded-xl bg-surface-container shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6">
+<div class="space-y-2">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Engineering Evaluation</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface font-bold">Evaluating Architectures for High Scale?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+            Alex is available for Staff/Principal Engineering roles and strategic full-stack systems consulting. Let’s review distributed designs or optimize your database isolation tiers.
+          </p>
+</div>
+<div class="flex flex-wrap items-center gap-3 shrink-0">
+<a class="px-5 py-3 rounded bg-primary text-on-primary font-label-sm text-label-sm font-bold hover:bg-primary-fixed shadow-md shadow-primary/20 transition-all hover:scale-105" href="#">
+            Discuss Architecture With Alex
+          </a>
+<a class="px-4 py-3 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm hover:bg-surface-bright transition-all shadow-sm" href="#">
+            Read Next Case Study →
+          </a>
+</div>
+</div>
+</div>
+<!-- Case Study Pagination Footer -->
+<div class="max-w-7xl mx-auto px-6 py-10">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Previous Project -->
+<a class="group p-5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm flex items-center justify-between" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:-translate-x-1 group-hover:text-primary transition-transform">arrow_back</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Previous System</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">StreamPulse Realtime Audio</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">WebRTC • C++</span>
+</a>
+<!-- Next Project -->
+<a class="group p-5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm flex items-center justify-between text-right" href="#">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Next System</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-secondary transition-colors">HyperUI Design Engine</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 group-hover:text-secondary transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function switchTab(tabId) {
+    const tabs = ['overview', 'architecture', 'challenges', 'benchmarks'];
+    
+    tabs.forEach(t => {
+      const btn = document.getElementById('tab-btn-' + t);
+      const panel = document.getElementById('tab-panel-' + t);
+      
+      if (t === tabId) {
+        btn.classList.add('bg-primary', 'text-on-primary', 'font-bold');
+        btn.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+        panel.classList.remove('hidden');
+      } else {
+        btn.classList.remove('bg-primary', 'text-on-primary', 'font-bold');
+        btn.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+        panel.classList.add('hidden');
+      }
+    });
+  }
+
+  function copySnippet(elementId, btn) {
+    const text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined text-[16px] text-primary">check</span><span class="text-primary">Copied!</span>';
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+      }, 2000);
+    });
+  }
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/20 py-8"><div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4"><div class="flex flex-wrap items-center gap-2"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mr-2">Stack Core:</span><span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant/30 font-label-sm text-label-sm text-on-surface">Next.js</span><span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant/30 font-label-sm text-label-sm text-on-surface">TypeScript</span><span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant/30 font-label-sm text-label-sm text-on-surface">Go</span><span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant/30 font-label-sm text-label-sm text-on-surface">PostgreSQL</span><span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant/30 font-label-sm text-label-sm text-on-surface">Docker</span><span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant/30 font-label-sm text-label-sm text-on-surface">AWS</span></div><div class="flex items-center gap-4 text-on-surface-variant"><div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container border border-outline-variant/20"><span class="inline-block h-1.5 w-1.5 rounded-full bg-primary"></span><span class="font-label-sm text-label-sm text-primary">99.99% Uptime</span></div><span class="font-body-sm text-body-sm">© 2024 Alex Rivera. Engineered with Precision.</span></div></div></footer></body></html>

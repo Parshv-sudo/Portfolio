@@ -1,0 +1,414 @@
+/* ============================================================
+   MAIN CSS — GSAP-Inspired Portfolio
+   Parshv Runwal
+   ============================================================ */
+
+/* ---- CSS Custom Properties (Design Tokens) ---- */
+:root {
+  --bg: #0f131c;
+  --bg-elevated: #181c24;
+  --bg-card: #1c2028;
+  --bg-card-high: #262a33;
+  --text-primary: #dfe2ee;
+  --text-muted: #bbcabf;
+  --text-dim: #86948a;
+  --accent-green: #4edea3;
+  --accent-cyan: #4cd7f6;
+  --accent-lavender: #c0c1ff;
+  --accent-orange: #ffbd2e;
+  --cream: #fffce1;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ---- Base Reset ---- */
+@layer base {
+  html, body { margin: 0; padding: 0; scroll-behavior: auto; }
+  body {
+    overscroll-behavior: none;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+  }
+  main > :first-child { margin-top: 0 !important; }
+  main > :last-child { margin-bottom: 0 !important; }
+}
+* { box-sizing: border-box; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--bg-card-high);
+  border: 2px solid var(--bg);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+:focus-visible {
+  outline: 2px solid var(--accent-green);
+  outline-offset: 3px;
+}
+
+/* ---- Custom Cursor (Desktop Only) ---- */
+.custom-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent-green);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  mix-blend-mode: difference;
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+.custom-cursor.cursor-active {
+  opacity: 1;
+}
+.custom-cursor.cursor-hover {
+  width: 48px; height: 48px;
+  border-color: var(--cream);
+  background: rgba(78, 222, 163, 0.06);
+}
+.custom-cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 5px; height: 5px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+.custom-cursor-dot.cursor-active {
+  opacity: 1;
+}
+@media (pointer: coarse), (hover: none) {
+  .custom-cursor, .custom-cursor-dot { display: none !important; }
+}
+
+/* ---- Announcement Bar ---- */
+.announcement-bar {
+  background: var(--accent-green);
+  color: #003824;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 8px 16px;
+  transform: translateY(-100%);
+}
+
+/* ---- Hero Section ---- */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-label::before, .hero-label::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 16px;
+  background: var(--text-dim);
+}
+.hero-word {
+  font-family: var(--font-display);
+  font-weight: 900;
+  color: var(--cream);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-size: clamp(52px, 9vw, 110px);
+  display: block;
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.hero-cta-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 999px;
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: border-color 0.3s, color 0.3s;
+  cursor: pointer;
+  background: transparent;
+}
+.hero-cta-outline:hover {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+/* ---- Floating Gradient Shapes ---- */
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(1px);
+}
+.floating-shape-1 {
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-cyan) 100%);
+  top: 18%; right: 15%;
+  opacity: 0.7;
+}
+.floating-shape-2 {
+  width: 55px; height: 55px;
+  background: linear-gradient(135deg, var(--accent-lavender) 0%, var(--accent-orange) 100%);
+  bottom: 22%; left: 12%;
+  opacity: 0.6;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+.floating-shape-3 {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-green) 100%);
+  top: 35%; left: 22%;
+  opacity: 0.5;
+}
+
+/* ---- Tilted Badge Pills ---- */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  position: absolute;
+  z-index: 1;
+  white-space: nowrap;
+}
+.badge-pill-green {
+  background: var(--accent-green);
+  color: #003824;
+}
+.badge-pill-cyan {
+  background: var(--accent-cyan);
+  color: #003640;
+}
+.badge-pill-lavender {
+  background: var(--accent-lavender);
+  color: #07006c;
+}
+
+/* ---- Scrub Text Section ---- */
+.scrub-section {
+  padding: 200px 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.scrub-copy {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4.5vw, 52px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+.scrub-word {
+  color: var(--text-dim);
+  opacity: 0.18;
+  transition: none; /* GSAP handles this */
+}
+
+/* ---- Marquee ---- */
+.marquee-container {
+  overflow: hidden;
+  padding: 40px 0;
+  border-top: 1px solid rgba(60, 74, 66, 0.2);
+  border-bottom: 1px solid rgba(60, 74, 66, 0.2);
+}
+.marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  will-change: transform;
+}
+.marquee-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(60, 74, 66, 0.3);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  background: transparent;
+  transition: border-color 0.3s, color 0.3s;
+}
+.marquee-pill:hover {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+/* ---- Stats Counter Section ---- */
+.stats-section {
+  padding: 80px 24px;
+  background: var(--bg-elevated);
+}
+.stat-block {
+  text-align: center;
+}
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* ---- Section Labels (GSAP-style braces) ---- */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label::before { content: '{ '; color: var(--text-dim); }
+.section-label::after { content: ' }'; color: var(--text-dim); }
+
+/* ---- Feature Blocks ---- */
+.feature-block {
+  padding: 100px 24px;
+}
+.feature-category {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+.feature-description {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.8vw, 20px);
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 480px;
+}
+.feature-visual {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---- Footer Inversion ---- */
+.footer-inverted {
+  background: var(--cream);
+  color: #0f131c;
+  transition: background 0.6s ease;
+}
+.footer-inverted a { color: #006c49; }
+.footer-inverted .footer-muted { color: #3c4a42; }
+
+/* ---- Mobile Menu ---- */
+#mobile-menu { transition: opacity 0.3s ease, transform 0.3s ease; }
+#mobile-menu.menu-hidden { opacity: 0; pointer-events: none; transform: translateY(-12px); }
+#mobile-menu.menu-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+/* ---- Scroll-to-top ---- */
+#scroll-top-btn { transition: opacity 0.3s ease, transform 0.3s ease; }
+#scroll-top-btn.hidden-btn { opacity: 0; pointer-events: none; transform: translateY(10px); }
+#scroll-top-btn.visible-btn { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+/* ---- GSAP will-change ---- */
+.gsap-animate { will-change: transform, opacity; }
+
+/* ---- Tab Panels ---- */
+.tab-panel { transition: none; }
+.tab-panel.hidden { display: none; }
+
+/* ---- Section Divider ---- */
+section[data-section] + section[data-section] {
+  border-top: 1px solid rgba(60, 74, 66, 0.2);
+}
+
+/* ---- Timeline Line Draw ---- */
+.timeline-draw-line {
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+/* ---- Magnetic Button ---- */
+.magnetic-btn {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ---- Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .custom-cursor, .custom-cursor-dot { display: none !important; }
+  .floating-shape { display: none !important; }
+  .hero-word { clip-path: none !important; }
+  .scrub-word { opacity: 1 !important; color: var(--text-primary) !important; }
+  .marquee-track { animation: none !important; }
+}
+
+/* ---- Mobile Overrides ---- */
+@media (max-width: 768px) {
+  .hero-section { padding: 100px 20px 60px; min-height: 90vh; }
+  .floating-shape { transform: scale(0.6) !important; opacity: 0.3 !important; }
+  .scrub-section { padding: 100px 20px; }
+  .badge-pill { display: none; }
+  .marquee-pill { padding: 8px 16px; font-size: 12px; }
+  .stats-section { padding: 60px 20px; }
+  .feature-block { padding: 60px 20px; }
+}
